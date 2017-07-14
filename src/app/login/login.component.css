@@ -1,0 +1,15 @@
+#body {
+  height: 100%;
+}
+
+#login-box {
+  margin-top: 180px;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  border-color: green;
+  background-color: white;
+}
+
+
+
