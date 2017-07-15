@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { DepositoComponent } from './deposito/deposito.component';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DepositoComponent } from './deposito/deposito.component';
     DepositoComponent
   ],
   imports: [
+    routing,
     BrowserModule,
     CommonModule,
     FormsModule,
