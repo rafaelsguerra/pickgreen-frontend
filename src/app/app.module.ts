@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
+import { DepositoComponent } from './deposito/deposito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MapComponent
+    MapComponent,
+    DepositoComponent
   ],
   imports: [
     BrowserModule,
