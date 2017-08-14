@@ -1,3 +1,9 @@
+#header {
+  height: 195px;
+  background-color: lightgreen;
+  padding: 75px;
+}
+
 agm-map {
-  height: 100vh;
+  height: 79vh;
 }

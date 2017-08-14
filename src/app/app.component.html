@@ -1,24 +1,24 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <span class="navbar-brand">PickGreen</span>
+      <span class="navbar-brand" style="color: white">PickGreen</span>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left">
         <li routerLinkActive="active">
-          <a routerLink="/mapa">Mapa</a>
+          <a routerLink="/mapa" style="color: white">Mapa</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="/novo-deposito">Novo depósito</a>
+          <a routerLink="/novo-deposito" style="color: white">Novo depósito</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a routerLink="/login" style="color: white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
 
     </div>
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<app-users></app-users>

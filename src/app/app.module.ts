@@ -9,13 +9,26 @@ import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { DepositoComponent } from './deposito/deposito.component';
 import { routing } from './app.routing';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UsersComponent } from './admin-panel/users/users.component';
+import { CollectorsComponent } from './admin-panel/collectors/collectors.component';
+import { EventsComponent } from './admin-panel/events/events.component';
+import { DepositPlaceComponent } from './admin-panel/deposit-place/deposit-place.component';
+import { BraceletsComponent } from './admin-panel/bracelets/bracelets.component';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MapComponent,
-    DepositoComponent
+    DepositoComponent,
+    AdminPanelComponent,
+    UsersComponent,
+    CollectorsComponent,
+    EventsComponent,
+    DepositPlaceComponent,
+    BraceletsComponent
   ],
   imports: [
     routing,

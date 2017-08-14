@@ -1,0 +1,59 @@
+<div id="header">
+  <div class="container">
+    <h1 style="color: white">Usuários</h1>
+  </div>
+</div>
+
+<div style="background-color: white">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>CPF</th>
+    <th>Ações</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>John Doe</td>
+    <td>john@exa-mple.com</td>
+    <td>111.111.111-11</td>
+    <td><a href="">Editar</a>
+        <a href="">Remover</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Mary Moe</td>
+    <td>mary@example.com</td>
+    <td>222.222.222-22</td>
+    <td><a href="">Editar</a>
+      <a href="">Remover</a>
+    </td>
+  </tr>
+  <tr>
+    <td>July Dooley</td>
+    <td>july@example.com</td>
+    <td>333.333.333-33</td>
+    <td><a href="">Editar</a>
+      <a href="">Remover</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-success" id="fixedButton" onclick="openModal()" >
+    <span class="glyphicon glyphicon-plus-sign" onclick="closeModal()"></span> Novo usuário</button>
+</div>
+
+<div id="userModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>lorem ipsum dolor sit amet</p>
+  </div>
+
+</div>
+

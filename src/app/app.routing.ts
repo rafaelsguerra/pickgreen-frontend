@@ -9,8 +9,7 @@ const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'mapa', component: MapComponent },
-  { path: 'novo-deposito', component: DepositoComponent }
-
+  { path: 'novo-deposito', component: DepositoComponent },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
