@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NewUserComponent } from './new-user/new-user.component';
+import { DialogService } from 'ng2-bootstrap-modal';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -7,19 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  modal = document.getElementById('userModal');
+  constructor(private dialogService: DialogService) { }
 
-  constructor() { }
+  showModal() {
+    let disposable = this.dialogService.addDialog(NewUserComponent, {
+      title: 'Confirm title',
+      message: 'Confirm message'
+    }).subscribe((isConfirmed) => {
+      if (isConfirmed) {
+        alert('accepted');
+      } else {
+        alert('declined');
+      }
+    });
+  }
 
   ngOnInit() {
-  }
-
-  openModal() {
-    this.modal.style.display = 'block';
-  }
-
-  closeModal() {
-    this.modal.style.display = 'none';
   }
 
 }

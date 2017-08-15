@@ -16,6 +16,7 @@ import { EventsComponent } from './admin-panel/events/events.component';
 import { DepositPlaceComponent } from './admin-panel/deposit-place/deposit-place.component';
 import { BraceletsComponent } from './admin-panel/bracelets/bracelets.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { NewUserComponent } from './admin-panel/users/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
     CollectorsComponent,
     EventsComponent,
     DepositPlaceComponent,
-    BraceletsComponent
+    BraceletsComponent,
+    NewUserComponent
   ],
   imports: [
+    BootstrapModalModule,
     routing,
     BrowserModule,
     CommonModule,
@@ -38,6 +41,9 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
     })
+  ],
+  entryComponents: [
+    NewUserComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
