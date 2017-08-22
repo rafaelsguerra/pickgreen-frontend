@@ -19,6 +19,10 @@ export class NewBraceletComponent extends DialogComponent<NewBraceletModel, stri
     super(dialogService);
   }
 
+  apply() {
+    this.close();
+  }
+
   ngOnInit() {
   }
 
