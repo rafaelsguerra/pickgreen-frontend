@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NewDepositPlaceComponent } from './new-deposit-place/new-deposit-place.component';
+import { DialogService } from 'ng2-bootstrap-modal';
+
 @Component({
   selector: 'app-deposit-place',
   templateUrl: './deposit-place.component.html',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepositPlaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
+
+  showDepositPlace() {
+    this.dialogService.addDialog(NewDepositPlaceComponent, {
+      title: 'Novo local de depósito'
+    });
+  }
 
   ngOnInit() {
   }

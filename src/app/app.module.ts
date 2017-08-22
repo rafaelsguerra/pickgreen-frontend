@@ -17,6 +17,10 @@ import { DepositPlaceComponent } from './admin-panel/deposit-place/deposit-place
 import { BraceletsComponent } from './admin-panel/bracelets/bracelets.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { NewUserComponent } from './admin-panel/users/new-user/new-user.component';
+import { NewEventComponent } from './admin-panel/events/new-event/new-event.component';
+import { NewDepositPlaceComponent } from './admin-panel/deposit-place/new-deposit-place/new-deposit-place.component';
+import { NewCollectorComponent } from './admin-panel/collectors/new-collector/new-collector.component';
+import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-bracelet.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { NewUserComponent } from './admin-panel/users/new-user/new-user.componen
     EventsComponent,
     DepositPlaceComponent,
     BraceletsComponent,
-    NewUserComponent
+    NewUserComponent,
+    NewEventComponent,
+    NewDepositPlaceComponent,
+    NewCollectorComponent,
+    NewBraceletComponent
   ],
   imports: [
     BootstrapModalModule,
@@ -43,7 +51,11 @@ import { NewUserComponent } from './admin-panel/users/new-user/new-user.componen
     })
   ],
   entryComponents: [
-    NewUserComponent
+    NewUserComponent,
+    NewEventComponent,
+    NewDepositPlaceComponent,
+    NewCollectorComponent,
+    NewBraceletComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
