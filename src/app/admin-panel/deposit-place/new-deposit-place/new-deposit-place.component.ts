@@ -23,6 +23,10 @@ export class NewDepositPlaceComponent extends DialogComponent<NewDepositModel, s
     this.close();
   }
 
+  onSubmit(form) {
+    console.log(form);
+  }
+
   ngOnInit() {
   }
 

@@ -23,6 +23,10 @@ export class NewCollectorComponent extends DialogComponent<NewCollectorModel, st
     this.close();
   }
 
+  onSubmit(form) {
+    console.log(form);
+  }
+
   ngOnInit() {
   }
 

@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
   constructor(private dialogService: DialogService) { }
 
   showModal() {
-    let disposable = this.dialogService.addDialog(NewUserComponent, {
+    const disposable = this.dialogService.addDialog(NewUserComponent, {
       title: 'Confirm title',
       message: 'Confirm message'
     }).subscribe((isConfirmed) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
+import { Form } from '@angular/forms';
 export interface ConfirmModel {
   title: string;
   message: string;
@@ -21,6 +22,10 @@ export class NewUserComponent extends DialogComponent<ConfirmModel, boolean> imp
   confirm() {
     this.result = true;
     this.close();
+  }
+
+  onSubmit(form) {
+    console.log(form);
   }
 
   ngOnInit() {

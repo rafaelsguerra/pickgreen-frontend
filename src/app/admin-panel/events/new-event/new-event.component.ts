@@ -22,6 +22,10 @@ export class NewEventComponent extends DialogComponent<EventModel, string> imple
     this.close();
   }
 
+  onSubmit(form) {
+    console.log(form);
+  }
+
   ngOnInit() {
   }
 

@@ -23,6 +23,10 @@ export class NewBraceletComponent extends DialogComponent<NewBraceletModel, stri
     this.close();
   }
 
+  onSubmit(form) {
+    console.log(form);
+  }
+
   ngOnInit() {
   }
 
