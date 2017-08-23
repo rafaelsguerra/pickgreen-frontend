@@ -17,33 +17,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Campina Grande</td>
-      <td>Coleta seletiva</td>
-      <td>11/11/11</td>
-      <td>12/11/11</td>
+    <tr *ngFor="let event of events">
+      <td>{{ event.local }}</td>
+      <td>{{ event.descricao }}</td>
+      <td>{{ event.dataInicio.getDate() + '/' + (event.dataInicio.getMonth() + 1) + '/' + event.dataInicio.getFullYear() }}</td>
+      <td>{{ event.dataFim.getDate() + '/' + (event.dataFim.getMonth() + 1) + '/' + event.dataFim.getFullYear()}}</td>
       <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
+          <a href="">Remover</a></td>
     </tr>
-    <tr>
-      <td>João Pessoa</td>
-      <td>Coleta seletiva</td>
-      <td>22/22/22</td>
-      <td>23/22/22</td>
-      <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Sumé</td>
-      <td>To sem ideia de evento</td>
-      <td>33/33/33</td>
-      <td>34/33/33</td>
-      <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
-    </tr>
+
     </tbody>
   </table>
 </div>

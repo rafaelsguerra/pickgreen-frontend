@@ -15,29 +15,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Local A</td>
-      <td>111111111</td>
-      <td>Rua exemplo 1, número 123</td>
+    <tr *ngFor="let place of depositPlaces">
+      <td>{{ place.local }}</td>
+      <td>{{ place.telefone }}</td>
+      <td>{{ place.endereco }}</td>
       <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Local B</td>
-      <td>222222222</td>
-      <td>Rua exemplo 2, número 456</td>
-      <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Local c</td>
-      <td>333333333</td>
-      <td>Rua exemplo 3, número 789</td>
-      <td><a href="">Editar</a>
-        <a href="">Remover</a>
-      </td>
+          <a href="">Remover</a></td>
     </tr>
     </tbody>
   </table>

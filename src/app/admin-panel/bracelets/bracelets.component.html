@@ -15,23 +15,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Usuário a</td>
-      <td>111111111</td>
-      <td>Rua exemplo 1, número 123</td>
-      <td><a href="">Remover</a></td>
-    </tr>
-    <tr>
-      <td>Usuário B</td>
-      <td>222222222</td>
-      <td>Rua exemplo 2, número 456</td>
-      <td><a href="">Remover</a></td>
-    </tr>
-    <tr>
-      <td>-</td>
-      <td>333333333</td>
-      <td>Rua exemplo 3, número 789</td>
-      <td><a href="">Remover</a></td>
+    <tr *ngFor="let bracelet of bracelets">
+      <td>{{ bracelet.dono }}</td>
+      <td>{{ bracelet.dataCriacao.getDay() + '/' + (bracelet.dataCriacao.getMonth() + 1) + '/' + bracelet.dataCriacao.getFullYear() }}</td>
+      <td>{{ bracelet.dataAtivacao.getDay() + '/' + (bracelet.dataAtivacao.getMonth() + 1) + '/' + bracelet.dataAtivacao.getFullYear()}}</td>
+      <td><a href="">Editar</a>
+          <a href="">Remover</a></td>
     </tr>
     </tbody>
   </table>
