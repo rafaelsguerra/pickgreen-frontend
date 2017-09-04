@@ -21,6 +21,7 @@ import { NewEventComponent } from './admin-panel/events/new-event/new-event.comp
 import { NewDepositPlaceComponent } from './admin-panel/deposit-place/new-deposit-place/new-deposit-place.component';
 import { NewCollectorComponent } from './admin-panel/collectors/new-collector/new-collector.component';
 import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-bracelet.component';
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-b
     BrowserModule,
     CommonModule,
     FormsModule,
+    DateValueAccessorModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
     })

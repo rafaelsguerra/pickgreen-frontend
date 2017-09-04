@@ -17,8 +17,8 @@
     <tbody>
     <tr *ngFor="let bracelet of bracelets">
       <td style="vertical-align: middle">{{ bracelet.dono }}</td>
-      <td style="vertical-align: middle">{{ bracelet.dataCriacao.getDay() + '/' + (bracelet.dataCriacao.getMonth() + 1) + '/' + bracelet.dataCriacao.getFullYear() }}</td>
-      <td style="vertical-align: middle">{{ bracelet.dataAtivacao.getDay() + '/' + (bracelet.dataAtivacao.getMonth() + 1) + '/' + bracelet.dataAtivacao.getFullYear()}}</td>
+      <td style="vertical-align: middle">{{ bracelet.dataCriacao.getDate() + '/' + (bracelet.dataCriacao.getMonth() + 1) + '/' + bracelet.dataCriacao.getFullYear() }}</td>
+      <td style="vertical-align: middle">{{ bracelet.dataAtivacao.getDate() + '/' + (bracelet.dataAtivacao.getMonth() + 1) + '/' + bracelet.dataAtivacao.getFullYear()}}</td>
       <td style="vertical-align: middle">
         <button class="btn btn-primary" (click)="updateBracelet(bracelet)">Editar</button>
         <button class="btn btn-danger" (click)="deleteBracelet(bracelet)">Remover</button></td>
