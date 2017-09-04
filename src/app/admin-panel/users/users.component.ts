@@ -21,15 +21,33 @@ export class UsersComponent implements OnInit {
 
   showModal() {
     const disposable = this.dialogService.addDialog(NewUserComponent, {
-      title: 'Confirm title',
-      message: 'Confirm message'
-    }).subscribe((isConfirmed) => {
-      if (isConfirmed) {
-        alert('accepted');
-      } else {
-        alert('declined');
+      title: 'Novo usuário',
+      message: 'Confirm message',
+      user: new User(null, null, null)
+    }).subscribe((userFromModal) => {
+      if (typeof userFromModal !== 'undefined') {
+        this.users.push(userFromModal);
       }
     });
+  }
+
+  updateUser(user: User) {
+    this.dialogService.addDialog(NewUserComponent, {
+      title: 'Detalhes do usuário',
+      user: user
+    }).subscribe((userFromModal) => {
+      if (typeof userFromModal !== 'undefined') {
+        const index = this.users.indexOf(user);
+        this.users[index] = userFromModal;
+      }
+    });
+  }
+
+  deleteUser(user: User) {
+    const index = this.users.indexOf(user);
+    if (index !== -1) {
+      this.users.splice(index, 1);
+    }
   }
 
   ngOnInit() {

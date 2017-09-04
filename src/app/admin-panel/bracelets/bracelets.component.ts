@@ -12,7 +12,7 @@ import { Bracelet } from './bracelet.model';
 export class BraceletsComponent implements OnInit {
 
   bracelets: Bracelet[] = [
-    new Bracelet('Usuário A', new Date('November, 11, 11'), new Date('November, 12, 11')),
+    new Bracelet('Usuário A', new Date('November, 11, 2011'), new Date('November, 12, 2011')),
     new Bracelet('Usuário B', new Date('December, 25, 2015'), new Date('January, 25, 2017')),
     new Bracelet(null, new Date('October, 25, 2016'), new Date('October, 25, 2016'))
   ];
@@ -21,8 +21,33 @@ export class BraceletsComponent implements OnInit {
 
   showBracelet() {
     this.dialogService.addDialog(NewBraceletComponent, {
-      title: 'Nova pulseira'
+      title: 'Nova pulseira',
+      bracelet: new Bracelet(null, null, null)
+    }).subscribe((braceletFromModal) => {
+      if (typeof braceletFromModal !== 'undefined') {
+        this.bracelets.push(braceletFromModal);
+      }
     });
+  }
+
+  updateBracelet(bracelet: Bracelet) {
+    this.dialogService.addDialog(NewBraceletComponent, {
+      title: 'Editar pulseira',
+      bracelet: bracelet
+    }).subscribe((braceletFromModal) => {
+      if (typeof braceletFromModal !== 'undefined') {
+        const index = this.bracelets.indexOf(bracelet);
+        this.bracelets[index] = braceletFromModal;
+      }
+    });
+  }
+
+  deleteBracelet(bracelet: Bracelet) {
+    const index: number = this.bracelets.indexOf(bracelet);
+
+    if (index !== -1) {
+      this.bracelets.splice(index, 1);
+    }
   }
 
   ngOnInit() {

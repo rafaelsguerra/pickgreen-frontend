@@ -21,8 +21,33 @@ export class CollectorsComponent implements OnInit {
 
   showCollector() {
     this.dialogService.addDialog(NewCollectorComponent, {
-      title: 'Novo coletor'
+      title: 'Novo coletor',
+      collector: new Collector(null, null, null)
+    }).subscribe((collectorFromModal) => {
+      if (typeof collectorFromModal !== 'undefined') {
+        this.collectors.push(collectorFromModal);
+      }
     });
+  }
+
+  updateCollector(collector: Collector) {
+    this.dialogService.addDialog(NewCollectorComponent, {
+      title: 'Editar coletor',
+      collector: collector
+    }).subscribe((collectorFromModal) => {
+      if (typeof collectorFromModal !== 'undefined') {
+        const index = this.collectors.indexOf(collector);
+        this.collectors[index] = collectorFromModal;
+      }
+    });
+  }
+
+  deleteCollector(collector: Collector) {
+    const index = this.collectors.indexOf(collector);
+
+    if (index !== -1) {
+      this.collectors.splice(index, 1);
+    }
   }
 
   ngOnInit() {

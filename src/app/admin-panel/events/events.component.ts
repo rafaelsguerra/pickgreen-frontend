@@ -21,8 +21,33 @@ export class EventsComponent implements OnInit {
 
   showEvent() {
     this.dialogService.addDialog(NewEventComponent, {
-      title: 'Novo evento'
-    })
+      title: 'Novo evento',
+      event: new Event(null, null, null, null)
+    }).subscribe((eventFromModal) => {
+      if (typeof eventFromModal !== 'undefined') {
+        this.events.push(eventFromModal);
+      }
+    });
+  }
+
+  updateEvent(event: Event) {
+    this.dialogService.addDialog(NewEventComponent, {
+      title: 'Novo evento',
+      event: event
+    }).subscribe((eventFromModal) => {
+      if (typeof eventFromModal !== 'undefined') {
+        const index = this.events.indexOf(event);
+        this.events[index] = eventFromModal;
+      }
+    });
+  }
+
+  deleteEvent(event: Event) {
+    const index = this.events.indexOf(event);
+
+    if (index !== -1) {
+      this.events.splice(index, 1);
+    }
   }
 
   ngOnInit() {

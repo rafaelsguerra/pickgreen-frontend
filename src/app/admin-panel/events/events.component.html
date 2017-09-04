@@ -18,12 +18,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let event of events">
-      <td>{{ event.local }}</td>
-      <td>{{ event.descricao }}</td>
-      <td>{{ event.dataInicio.getDate() + '/' + (event.dataInicio.getMonth() + 1) + '/' + event.dataInicio.getFullYear() }}</td>
-      <td>{{ event.dataFim.getDate() + '/' + (event.dataFim.getMonth() + 1) + '/' + event.dataFim.getFullYear()}}</td>
-      <td><a href="">Editar</a>
-          <a href="">Remover</a></td>
+      <td style="vertical-align: middle">{{ event.local }}</td>
+      <td style="vertical-align: middle">{{ event.descricao }}</td>
+      <td style="vertical-align: middle">{{ event.dataInicio.getDate() + '/' + (event.dataInicio.getMonth() + 1) + '/' + event.dataInicio.getFullYear() }}</td>
+      <td style="vertical-align: middle">{{ event.dataFim.getDate() + '/' + (event.dataFim.getMonth() + 1) + '/' + event.dataFim.getFullYear()}}</td>
+      <td style="vertical-align: middle">
+        <button class="btn btn-primary" (click)="updateEvent(event)">Editar</button>
+        <button class="btn btn-danger" (click)="deleteEvent(event)">Remover</button></td>
     </tr>
 
     </tbody>
@@ -31,5 +32,6 @@
 </div>
 
 <div>
-  <button id="fixedButton" class="btn btn-success" (click)="showEvent()"><span class="glyphicon glyphicon-plus-sign"></span> Novo evento</button>
+  <button id="fixedButton" class="btn btn-success" (click)="showEvent()">
+    <span class="glyphicon glyphicon-plus-sign"></span> Novo evento</button>
 </div>

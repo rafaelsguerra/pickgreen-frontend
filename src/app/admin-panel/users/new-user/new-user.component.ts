@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { Form } from '@angular/forms';
+import { User } from '../user.model';
+
 export interface ConfirmModel {
   title: string;
   message: string;
+  user: User;
 }
 
 @Component({
@@ -11,21 +14,18 @@ export interface ConfirmModel {
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css']
 })
-export class NewUserComponent extends DialogComponent<ConfirmModel, boolean> implements OnInit {
+export class NewUserComponent extends DialogComponent<ConfirmModel, User> implements OnInit {
   title: string;
   message: string;
+  user: User;
 
   constructor(dialogService: DialogService) {
     super(dialogService);
   }
 
-  confirm() {
-    this.result = true;
-    this.close();
-  }
-
   onSubmit(form) {
-    console.log(form);
+    this.result = new User(form.value.name, form.value.email, form.value.cpf);
+    this.close();
   }
 
   ngOnInit() {

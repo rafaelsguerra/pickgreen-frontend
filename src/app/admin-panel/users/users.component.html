@@ -17,11 +17,12 @@
   </thead>
   <tbody>
   <tr *ngFor="let user of users">
-    <td>{{ user.name }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.cpf }}</td>
-    <td><a href="">Editar</a>
-        <a href="">Remover</a>
+    <td style="vertical-align: middle">{{ user.name }}</td>
+    <td style="vertical-align: middle">{{ user.email }}</td>
+    <td style="vertical-align: middle">{{ user.cpf }}</td>
+    <td style="vertical-align: middle">
+      <button class="btn btn-primary" (click)="updateUser(user)">Editar</button>
+      <button class="btn btn-danger" (click)="deleteUser(user)">Remover</button>
     </td>
   </tr>
   </tbody>

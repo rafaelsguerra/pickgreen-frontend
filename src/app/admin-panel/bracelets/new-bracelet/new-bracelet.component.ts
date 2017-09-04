@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogService, DialogComponent } from 'ng2-bootstrap-modal';
+import { Bracelet } from '../bracelet.model';
 
 export interface NewBraceletModel {
   title: string;
+  bracelet: Bracelet;
 }
 
 @Component({
@@ -11,20 +13,18 @@ export interface NewBraceletModel {
   templateUrl: './new-bracelet.component.html',
   styleUrls: ['./new-bracelet.component.css']
 })
-export class NewBraceletComponent extends DialogComponent<NewBraceletModel, string> implements OnInit {
+export class NewBraceletComponent extends DialogComponent<NewBraceletModel, Bracelet> implements OnInit {
 
   title: string;
+  bracelet: Bracelet;
 
   constructor(dialogService: DialogService) {
     super(dialogService);
   }
 
-  apply() {
-    this.close();
-  }
-
   onSubmit(form) {
-    console.log(form);
+    this.result = new Bracelet(form.value.nome, form.value.dataCriacao, form.value.dataAtivacao);
+    this.close();
   }
 
   ngOnInit() {

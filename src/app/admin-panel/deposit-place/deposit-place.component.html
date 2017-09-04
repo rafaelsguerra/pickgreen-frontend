@@ -16,11 +16,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let place of depositPlaces">
-      <td>{{ place.local }}</td>
-      <td>{{ place.telefone }}</td>
-      <td>{{ place.endereco }}</td>
-      <td><a href="">Editar</a>
-          <a href="">Remover</a></td>
+      <td style="vertical-align: middle">{{ place.local }}</td>
+      <td style="vertical-align: middle">{{ place.telefone }}</td>
+      <td style="vertical-align: middle">{{ place.endereco }}</td>
+      <td style="vertical-align: middle">
+        <button class="btn btn-primary" (click)="updateDepositPlace(place)">Editar</button>
+        <button class="btn btn-danger" (click)="deleteDepositPlace(place)">Remover</button></td>
     </tr>
     </tbody>
   </table>

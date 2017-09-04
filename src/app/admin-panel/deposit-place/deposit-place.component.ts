@@ -21,8 +21,33 @@ export class DepositPlaceComponent implements OnInit {
 
   showDepositPlace() {
     this.dialogService.addDialog(NewDepositPlaceComponent, {
-      title: 'Novo local de depósito'
+      title: 'Novo local de depósito',
+      place: new DepositPlace(null, null, null)
+    }).subscribe((placeFromModal) => {
+      if (typeof placeFromModal !== 'undefined') {
+        this.depositPlaces.push(placeFromModal);
+      }
     });
+  }
+
+  updateDepositPlace(place: DepositPlace) {
+    this.dialogService.addDialog(NewDepositPlaceComponent, {
+      title: 'Editar local de depósito',
+      place: place
+    }).subscribe((placeFromModal) => {
+      if (typeof placeFromModal !== 'undefined') {
+        const index = this.depositPlaces.indexOf(place);
+        this.depositPlaces[index] = placeFromModal;
+      }
+    });
+  }
+
+  deleteDepositPlace(place: DepositPlace) {
+    const index = this.depositPlaces.indexOf(place);
+
+    if (index !== -1) {
+      this.depositPlaces.splice(index, 1);
+    }
   }
 
   ngOnInit() {
