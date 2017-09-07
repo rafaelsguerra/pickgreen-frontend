@@ -4,7 +4,10 @@
   </div>
 </div>
 
-<agm-map [latitude]="lat" [longitude]="lon">
-  <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
+
+<agm-map [latitude]="y" [longitude]="x">
+  <div *ngFor="let coord of coords">
+  <agm-marker [latitude]="coord.lat" [longitude]="coord.lon"></agm-marker>
+  </div>
 </agm-map>
 

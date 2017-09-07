@@ -22,6 +22,7 @@ import { NewDepositPlaceComponent } from './admin-panel/deposit-place/new-deposi
 import { NewCollectorComponent } from './admin-panel/collectors/new-collector/new-collector.component';
 import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-bracelet.component';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { DateValueAccessorModule } from 'angular-date-value-accessor';
     NewCollectorComponent,
     NewBraceletComponent
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

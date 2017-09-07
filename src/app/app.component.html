@@ -11,14 +11,19 @@
         <li routerLinkActive="active">
           <a routerLink="/novo-deposito" style="color: white">Novo depósito</a>
         </li>
+        <li routerLinkActive="active"><a routerLink="usuarios">Usuários</a></li>
+        <li routerLinkActive="active"><a routerLink="eventos">Eventos</a></li>
+        <li routerLinkActive="active"><a routerLink="locais-de-deposito">Locais de depósito</a></li>
+        <li routerLinkActive="active"><a routerLink="coletores">Coletores</a></li>
+        <li routerLinkActive="active"><a routerLink="pulseiras">Pulseiras</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login" style="color: white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a routerLink="/login" style="color: white"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
 
     </div>
   </div>
 </nav>
 
-<app-events></app-events>
+<router-outlet></router-outlet>

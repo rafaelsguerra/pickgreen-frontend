@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  lat = 51.678418;
-  lon = 7.809007;
+  y = -7.216521;
+  x = -35.909413;
+
+  coords = [
+    { lat: -7.218492, lon: -35.910362 },
+    { lat: -7.218922, lon: -35.902269 },
+    { lat: -7.218734, lon: -35.905996 }
+  ];
 
   constructor() { }
 
