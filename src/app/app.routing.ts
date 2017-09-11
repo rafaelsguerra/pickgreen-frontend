@@ -4,12 +4,12 @@ import { ModuleWithProviders } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { DepositoComponent } from './deposito/deposito.component';
-import {UsersComponent} from "./admin-panel/users/users.component";
-import {EventsComponent} from "./admin-panel/events/events.component";
-import {DepositPlaceComponent} from "./admin-panel/deposit-place/deposit-place.component";
-import {CollectorsComponent} from "./admin-panel/collectors/collectors.component";
-import {BraceletsComponent} from "./admin-panel/bracelets/bracelets.component";
-import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
+import { UsersComponent } from './admin-panel/users/users.component';
+import { EventsComponent } from './admin-panel/events/events.component';
+import { DepositPlaceComponent } from './admin-panel/deposit-place/deposit-place.component';
+import { CollectorsComponent } from './admin-panel/collectors/collectors.component';
+import { BraceletsComponent } from './admin-panel/bracelets/bracelets.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },

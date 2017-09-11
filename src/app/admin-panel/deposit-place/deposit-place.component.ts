@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewDepositPlaceComponent } from './new-deposit-place/new-deposit-place.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { DepositPlace } from './deposit-place.model';
+import { CrudService } from '../../_services/crud.service';
 
 @Component({
   selector: 'app-deposit-place',
@@ -17,15 +18,18 @@ export class DepositPlaceComponent implements OnInit {
     new DepositPlace('Local C', '333333333', 'Rua exemplo 3, número 789')
   ];
 
-  constructor(private dialogService: DialogService) { }
+  route = 'localApi/';
 
-  showDepositPlace() {
+  constructor(private dialogService: DialogService, private crudService: CrudService) { }
+
+  createDepositPlace() {
     this.dialogService.addDialog(NewDepositPlaceComponent, {
       title: 'Novo local de depósito',
       place: new DepositPlace(null, null, null)
     }).subscribe((placeFromModal) => {
       if (typeof placeFromModal !== 'undefined') {
         this.depositPlaces.push(placeFromModal);
+        this.crudService.create(this.route, placeFromModal);
       }
     });
   }
@@ -38,6 +42,7 @@ export class DepositPlaceComponent implements OnInit {
       if (typeof placeFromModal !== 'undefined') {
         const index = this.depositPlaces.indexOf(place);
         this.depositPlaces[index] = placeFromModal;
+        this.crudService.update(this.route, placeFromModal, index);
       }
     });
   }
@@ -47,10 +52,16 @@ export class DepositPlaceComponent implements OnInit {
 
     if (index !== -1) {
       this.depositPlaces.splice(index, 1);
+      this.crudService.deleteById(this.route, index);
     }
   }
 
+  loadDepositPLaces() {
+    this.crudService.getAll(this.route).subscribe(depositPlaces => {this.depositPlaces = depositPlaces});
+  }
+
   ngOnInit() {
+    // this.loadDepositPLaces();
   }
 
 }

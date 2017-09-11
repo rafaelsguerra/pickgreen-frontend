@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,7 +23,8 @@ import { NewDepositPlaceComponent } from './admin-panel/deposit-place/new-deposi
 import { NewCollectorComponent } from './admin-panel/collectors/new-collector/new-collector.component';
 import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-bracelet.component';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
-import { LoginService } from './login/login.service';
+import { LoginService } from './_services/login.service';
+import { CrudService } from './_services/crud.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { LoginService } from './login/login.service';
     BrowserModule,
     CommonModule,
     FormsModule,
+    HttpModule,
     DateValueAccessorModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
@@ -60,7 +63,7 @@ import { LoginService } from './login/login.service';
     NewCollectorComponent,
     NewBraceletComponent
   ],
-  providers: [LoginService],
+  providers: [LoginService, CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

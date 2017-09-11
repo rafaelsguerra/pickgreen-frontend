@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewUserComponent } from './new-user/new-user.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { User } from './user.model';
+import { CrudService } from '../../_services/crud.service';
 
 @Component({
   selector: 'app-users',
@@ -17,16 +18,19 @@ export class UsersComponent implements OnInit {
     new User('July Dooley', 'july@example.com', '333.333.333-33')
   ];
 
-  constructor(private dialogService: DialogService) { }
+  route = 'userApi/';
 
-  showModal() {
-    const disposable = this.dialogService.addDialog(NewUserComponent, {
+  constructor(private dialogService: DialogService, private crudService: CrudService) { }
+
+  createUser() {
+    this.dialogService.addDialog(NewUserComponent, {
       title: 'Novo usuário',
       message: 'Confirm message',
       user: new User(null, null, null)
     }).subscribe((userFromModal) => {
       if (typeof userFromModal !== 'undefined') {
         this.users.push(userFromModal);
+        this.crudService.create(this.route, userFromModal);
       }
     });
   }
@@ -39,6 +43,7 @@ export class UsersComponent implements OnInit {
       if (typeof userFromModal !== 'undefined') {
         const index = this.users.indexOf(user);
         this.users[index] = userFromModal;
+        this.crudService.update(this.route, userFromModal, index);
       }
     });
   }
@@ -47,10 +52,25 @@ export class UsersComponent implements OnInit {
     const index = this.users.indexOf(user);
     if (index !== -1) {
       this.users.splice(index, 1);
+      this.crudService.deleteById(this.route, index);
     }
   }
 
+  // getAll() {
+  //   this.crudService.getAll().subscribe(users => {
+  //     for (let index = 0; index < users.length; index ++) {
+  //       this.users.push(users[index]);
+  //
+  //     }
+  //   });
+  // }
+
+  loadUsers() {
+    this.crudService.getAll(this.route).subscribe(users => { this.users = users; });
+  }
+
   ngOnInit() {
+    // this.loadUsers();
   }
 
 }

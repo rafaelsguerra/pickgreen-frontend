@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewBraceletComponent } from './new-bracelet/new-bracelet.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Bracelet } from './bracelet.model';
+import { CrudService } from '../../_services/crud.service';
 
 @Component({
   selector: 'app-bracelets',
@@ -17,9 +18,9 @@ export class BraceletsComponent implements OnInit {
     new Bracelet(null, new Date('October, 25, 2016'), new Date('October, 25, 2016'))
   ];
 
-  constructor(private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService, private crudService: CrudService) { }
 
-  showBracelet() {
+  createBracelet() {
     this.dialogService.addDialog(NewBraceletComponent, {
       title: 'Nova pulseira',
       bracelet: new Bracelet(null, null, null)
