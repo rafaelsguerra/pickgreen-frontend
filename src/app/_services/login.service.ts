@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 export class FinalUser {
   pin: string;
+  typeOfUser: string;
   constructor() {};
 }
 
@@ -18,20 +19,29 @@ export class LoginService {
 
   login(user: FinalUser) {
     const pin = {pin: user.pin};
-    const url = this.ApiUrl + 'admApi/auth/';
+    let url = '';
+    if (user.typeOfUser === 'adm') {
+      url = this.ApiUrl + 'admApi/auth/';
+    } else {
+      url = this.ApiUrl + 'collectorApi/auth/';
+    }
 
     return this.http.post(url, pin);
   }
 
-  createSession(pin) {
-    window.sessionStorage.setItem('user', pin);
+  createAdmSession(credential) {
+    window.sessionStorage.setItem('user', credential._body);
     this.router.navigate(['/painel']);
+  }
+
+  createCollectorSession(credential) {
+    window.sessionStorage.setItem('user', credential._body);
+    this.router.navigate(['/mapa']);
   }
 
   logout() {
     if (!window.sessionStorage.getItem('user') === null) {
-      window.sessionStorage.clear();
-      this.router.navigate(['/login']);
+      window.sessionStorage.removeItem('user');
     }
   }
 
