@@ -8,17 +8,17 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Dono</th>
-      <th>Data de criação</th>
-      <th>Data de ativação</th>
+      <th>ID</th>
+      <th>Foi ativada</th>
+      <th>Código</th>
       <th>Ações</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let bracelet of bracelets">
-      <td style="vertical-align: middle">{{ bracelet.dono }}</td>
-      <td style="vertical-align: middle">{{ bracelet.dataCriacao.getDate() + '/' + (bracelet.dataCriacao.getMonth() + 1) + '/' + bracelet.dataCriacao.getFullYear() }}</td>
-      <td style="vertical-align: middle">{{ bracelet.dataAtivacao.getDate() + '/' + (bracelet.dataAtivacao.getMonth() + 1) + '/' + bracelet.dataAtivacao.getFullYear()}}</td>
+      <td style="vertical-align: middle">{{ bracelet._id }}</td>
+      <td style="vertical-align: middle">{{ bracelet.status ? 'Sim' : 'Não' }}</td>
+      <td style="vertical-align: middle">{{ bracelet.code }}</td>
       <td style="vertical-align: middle">
         <button class="btn btn-primary" (click)="updateBracelet(bracelet)">Editar</button>
         <button class="btn btn-danger" (click)="deleteBracelet(bracelet)">Remover</button></td>

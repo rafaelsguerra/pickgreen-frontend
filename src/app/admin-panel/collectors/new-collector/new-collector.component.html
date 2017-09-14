@@ -11,16 +11,10 @@
         <div class="form-group">
           <label for="nome" class="control-label col-sm-2" style="text-align: left">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="nome" [ngModel]="collector.nome" required>
+            <input type="text" class="form-control" id="nome" name="nome" [ngModel]="collector.name" required>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="email" class="control-label col-sm-2" style="text-align: left">Email:</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" [ngModel]="collector.email" required>
-          </div>
-        </div>
 
         <div class="form-group">
           <label for="cnpj" class="control-label col-sm-2" style="text-align: left">CNPJ:</label>
@@ -32,63 +26,63 @@
         <div class="form-group">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" ngModel>
+            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="collector.phone">
           </div>
         </div>
 
         <div class="form-group">
           <label for="pin" class="control-label col-sm-2" style="text-align: left">PIN de ativação:</label>
           <div class="col-sm-10">
-            <input type="tel" id="pin" class="form-control" name="pin" ngModel>
+            <input type="tel" id="pin" class="form-control" name="pin" [ngModel]="collector.pin">
           </div>
         </div>
 
         <div class="form-group">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" ngModel>
+            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="collector.street">
           </div>
         </div>
 
         <div class="form-group">
           <label for="complemento" class="control-label col-sm-2" style="text-align: left">Complemento:</label>
           <div class="col-sm-10">
-            <input type="text" id="complemento" class="form-control" name="complemento" ngModel>
+            <input type="text" id="complemento" class="form-control" name="complemento" [ngModel]="collector.complement">
           </div>
         </div>
 
         <div class="form-group">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número:</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" ngModel>
+            <input type="number" id="numero" class="form-control" name="numero" [ngModel]="collector.number">
           </div>
         </div>
 
         <div class="form-group">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" ngModel>
+            <input type="text" id="bairro" class="form-control" name="bairro" [ngModel]="collector.neighborhood">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" ngModel>
+            <input type="text" id="cidade" class="form-control" name="cidade" [ngModel]="collector.city">
           </div>
         </div>
 
         <div class="form-group">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" ngModel>
+            <input type="text" id="estado" class="form-control" name="estado" [ngModel]="collector.state">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" ngModel>
+            <input type="text" id="cep" class="form-control" name="cep" [ngModel]="collector.zipcode">
           </div>
         </div>
 

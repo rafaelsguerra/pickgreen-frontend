@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,14 @@ export class FinalUser {
 export class LoginService {
 
   ApiUrl = 'http://pick-green-api.herokuapp.com/';
+  admLogged = false;
+  collectorLogged = false;
+  showAdmMenu = false;
+  showCollectorMenu = false;
+
+  showMenuEmitter = new EventEmitter<boolean>();
+  showAdmMenuEmitter = new EventEmitter<boolean>();
+  showCollectorMenuEmitter = new EventEmitter<boolean>();
 
   constructor(private router: Router, private http: Http ) { }
 
@@ -30,19 +38,38 @@ export class LoginService {
   }
 
   createAdmSession(credential) {
-    window.sessionStorage.setItem('user', credential._body);
+    window.sessionStorage.setItem('userAdm', credential._body);
+    this.admLogged = true;
+    this.showAdmMenu = true;
+    this.showMenuEmitter.emit(true);
+    this.showAdmMenuEmitter.emit(true);
     this.router.navigate(['/painel']);
   }
 
   createCollectorSession(credential) {
-    window.sessionStorage.setItem('user', credential._body);
+    window.sessionStorage.setItem('userCollector', credential._body);
+    this.collectorLogged = true;
+    this.showCollectorMenu = true;
+    this.showMenuEmitter.emit(true);
+    this.showCollectorMenuEmitter.emit(true);
     this.router.navigate(['/mapa']);
   }
 
   logout() {
-    if (!window.sessionStorage.getItem('user') === null) {
-      window.sessionStorage.removeItem('user');
+    if (!window.sessionStorage.getItem('userAdm') === null) {
+      window.sessionStorage.removeItem('userAdm');
+      this.admLogged = false;
+      this.showAdmMenu = false;
     }
+
+    if (!window.sessionStorage.getItem('userCollector') === null) {
+      window.sessionStorage.removeItem('userCollector');
+      this.collectorLogged = false;
+      this.showCollectorMenu = false;
+    }
+    this.showMenuEmitter.emit(false);
+    this.showCollectorMenuEmitter.emit(false);
+    this.showAdmMenuEmitter.emit(false);
   }
 
 }

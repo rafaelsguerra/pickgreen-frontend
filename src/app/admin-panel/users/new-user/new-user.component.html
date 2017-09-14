@@ -23,23 +23,30 @@
         </div>
 
         <div class="form-group">
+          <label for="senha" class="control-label col-sm-2" style="text-align: left">Senha:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="senha" name="password" [ngModel]="user.password">
+          </div>
+        </div>
+
+        <div class="form-group">
           <label for="cpf" class="control-label col-sm-2" style="text-align: left">CPF:</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="cpf" name="cpf" required [ngModel]="user.cpf">
+            <input type="email" class="form-control" id="cpf" name="cpf" [ngModel]="user.cpf">
           </div>
         </div>
 
         <div class="form-group">
           <label for="datanascimento" class="control-label col-sm-2">Nascimento:</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" id="datanascimento" name="data" ngModel>
+            <input type="text" class="form-control" id="datanascimento" name="data" [ngModel]="user.birth">
           </div>
         </div>
 
         <div class="form-group">
           <label for="sexo" class="control-label col-sm-2" style="text-align: left">Sexo:</label>
           <div class="col-sm-10">
-            <select name="sexo" id="sexo" class="form-control" ngModel>
+            <select name="sexo" id="sexo" class="form-control" [ngModel]="user.sex">
               <option value="M">Masculino</option>
               <option value="F">Feminino</option>
             </select>
@@ -49,56 +56,63 @@
         <div class="form-group">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" ngModel>
+            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="user.phone">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pontos" class="control-label col-sm-2" style="text-align: left">Pontos:</label>
+          <div class="col-sm-10">
+            <input type="tel" id="pontos" class="form-control" name="points" [ngModel]="user.points">
           </div>
         </div>
 
         <div class="form-group">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" ngModel>
+            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="user.street">
           </div>
         </div>
 
         <div class="form-group">
           <label for="complemento" class="control-label col-sm-2" style="text-align: left">Complemento:</label>
           <div class="col-sm-10">
-            <input type="text" id="complemento" class="form-control" name="complemento" ngModel>
+            <input type="text" id="complemento" class="form-control" name="complemento" [ngModel]="user.complement">
           </div>
         </div>
 
         <div class="form-group">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" ngModel>
+            <input type="number" id="numero" class="form-control" name="numero" [ngModel]="user.number">
           </div>
         </div>
 
         <div class="form-group">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" ngModel>
+            <input type="text" id="bairro" class="form-control" name="bairro" [ngModel]="user.neighborhood">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" ngModel>
+            <input type="text" id="cidade" class="form-control" name="cidade" [ngModel]="user.city">
           </div>
         </div>
 
         <div class="form-group">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" ngModel>
+            <input type="text" id="estado" class="form-control" name="estado" [ngModel]="user.state">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" ngModel>
+            <input type="text" id="cep" class="form-control" name="cep" [ngModel]="user.zipcode">
           </div>
         </div>
 

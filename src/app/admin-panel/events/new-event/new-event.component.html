@@ -8,31 +8,32 @@
 
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+
         <div class="form-group">
           <label for="local" class="control-label col-sm-2" style="text-align: left">Local:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="local" name="local" [ngModel]="event.local" required>
+            <select name="local" id="local" class="form-control" [ngModel]="event._place">
+              <option *ngFor="let place of places" value="{{place._id}}">{{place.name}}</option>
+            </select>
           </div>
+        </div>
+
+        <div>
+
         </div>
 
         <div class="form-group">
           <label for="descricao" class="control-label col-sm-2" style="text-align: left">Descrição:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="descricao" name="descricao" [ngModel]="event.descricao" required>
+            <input type="text" class="form-control" id="descricao" name="descricao" [ngModel]="event.description" required>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="dataInicio" class="control-label col-sm-2" style="text-align: left">Data de início:</label>
-          <div class="col-sm-10">
-            <input type="date" class="form-control" id="dataInicio" name="dataInicio" [ngModel]="event.dataInicio" useValueAsDate>
-          </div>
-        </div>
 
         <div class="form-group">
-          <label for="dataFim" class="control-label col-sm-2" style="text-align: left">Data de fim:</label>
+          <label for="dataFim" class="control-label col-sm-2" style="text-align: left">Data de término:</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" id="dataFim" name="dataFim" [ngModel]="event.dataFim" useValueAsDate="">
+            <input type="text" class="form-control" id="dataFim" name="dataFim" [ngModel]="event.ended">
           </div>
         </div>
 

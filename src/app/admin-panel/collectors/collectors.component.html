@@ -9,24 +9,26 @@
     <thead>
     <tr>
       <th>Nome</th>
-      <th>Email</th>
+      <th>Endereço</th>
+      <th>Cidade</th>
       <th>CNPJ</th>
       <th>Ações</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let collector of collectors">
-      <td style="vertical-align: middle">{{ collector.nome }}</td>
-      <td style="vertical-align: middle">{{ collector.email }}</td>
+      <td style="vertical-align: middle">{{ collector.name }}</td>
+      <td style="vertical-align: middle">{{ collector.street }}, {{collector.number}}</td>
+      <td style="vertical-align: middle">{{ collector.city }}</td>
       <td style="vertical-align: middle">{{ collector.cnpj }}</td>
       <td style="vertical-align: middle">
-        <button class="btn btn-primary" (click)="updateCollector(collector)">Editar</button>
-        <button class="btn btn-danger" (click)="deleteCollector(collector)">Remover</button></td>
+        <button class="btn btn-primary" (click)="updateCollector(collector)" [disabled]="this.loading">Editar</button>
+        <button class="btn btn-danger" (click)="deleteCollector(collector)" [disabled]="this.loading">Remover</button></td>
     </tr>
     </tbody>
   </table>
 </div>
 
 <div>
-  <button id="fixedButton" class="btn btn-success" (click)="createCollector()"><span class="glyphicon glyphicon-plus-sign"></span> Novo coletor</button>
+  <button id="fixedButton" class="btn btn-success" (click)="createCollector()" [disabled]="this.loading"><span class="glyphicon glyphicon-plus-sign"></span> Novo coletor</button>
 </div>

@@ -12,33 +12,40 @@ import { CrudService } from '../../_services/crud.service';
 })
 export class BraceletsComponent implements OnInit {
 
-  bracelets: Bracelet[] = [
-    new Bracelet('Usuário A', new Date('November, 11, 2011'), new Date('November, 12, 2011')),
-    new Bracelet('Usuário B', new Date('December, 25, 2015'), new Date('January, 25, 2017')),
-    new Bracelet(null, new Date('October, 25, 2016'), new Date('October, 25, 2016'))
-  ];
+  bracelets: Bracelet[] = [];
+  route = 'braceletApi/';
+  loading = false;
 
   constructor(private dialogService: DialogService, private crudService: CrudService) { }
 
   createBracelet() {
-    this.dialogService.addDialog(NewBraceletComponent, {
-      title: 'Nova pulseira',
-      bracelet: new Bracelet(null, null, null)
-    }).subscribe((braceletFromModal) => {
-      if (typeof braceletFromModal !== 'undefined') {
-        this.bracelets.push(braceletFromModal);
-      }
+    const bracelet: Bracelet = new Bracelet(false, null);
+    this.loading = true;
+    this.crudService.create(this.route, bracelet).subscribe(response => {
+      this.bracelets.push(bracelet);
+      this.loading = false;
+    }, error => {
+      window.alert(error);
+      this.loading = false;
     });
   }
 
   updateBracelet(bracelet: Bracelet) {
     this.dialogService.addDialog(NewBraceletComponent, {
       title: 'Editar pulseira',
-      bracelet: bracelet
+      bracelet: bracelet,
+      users: []
     }).subscribe((braceletFromModal) => {
       if (typeof braceletFromModal !== 'undefined') {
         const index = this.bracelets.indexOf(bracelet);
-        this.bracelets[index] = braceletFromModal;
+        this.loading = true;
+        this.crudService.update(this.route + bracelet._id, braceletFromModal, 'bracelet').subscribe(response => {
+          this.bracelets[index] = braceletFromModal;
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false;
+        });
       }
     });
   }
@@ -47,11 +54,27 @@ export class BraceletsComponent implements OnInit {
     const index: number = this.bracelets.indexOf(bracelet);
 
     if (index !== -1) {
-      this.bracelets.splice(index, 1);
+      this.loading = true;
+      this.crudService.deleteById(this.route + bracelet._id).subscribe(response => {
+        this.bracelets.splice(index, 1);
+        this.loading = false;
+      }, error => {
+        window.alert(error);
+        this.loading = false;
+      });
     }
   }
 
+  loadBracelets() {
+    this.crudService.getAll(this.route).subscribe(bracelets => {
+      this.bracelets = bracelets
+    }, error => {
+      window.alert(error);
+    });
+  }
+
   ngOnInit() {
+    this.loadBracelets();
   }
 
 }

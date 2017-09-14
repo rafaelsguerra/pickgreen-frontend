@@ -12,24 +12,27 @@ import { CrudService } from '../../_services/crud.service';
 })
 export class EventsComponent implements OnInit {
 
-  events: Event[] = [
-    new Event('Campina Grande', 'Coleta seletiva', new Date('Mar 25 2015'), new Date('Mar 26 2015')),
-    new Event('João Pessoa', 'Coleta seletiva', new Date('July 11 2015'), new Date('July 16 2015')),
-    new Event('Sumé', 'To sem ideia de evento', new Date('September 12 2015'), new Date('September 12 2015'))
-  ];
-
-  route: 'eventoApi/'
+  events: Event[] = [];
+  eventsRoute = 'eventApi/';
+  loading = false;
 
   constructor(private dialogService: DialogService, private crudService: CrudService) {}
 
   createEvent() {
     this.dialogService.addDialog(NewEventComponent, {
       title: 'Novo evento',
-      event: new Event(null, null, null, null)
+      event: new Event(null, null),
+      places: []
     }).subscribe((eventFromModal) => {
       if (typeof eventFromModal !== 'undefined') {
-        this.events.push(eventFromModal);
-        this.crudService.create(this.route, eventFromModal);
+        this.loading = true;
+        this.crudService.create(this.eventsRoute, eventFromModal).subscribe(response => {
+          this.events.push(eventFromModal);
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false
+        });
       }
     });
   }
@@ -41,8 +44,14 @@ export class EventsComponent implements OnInit {
     }).subscribe((eventFromModal) => {
       if (typeof eventFromModal !== 'undefined') {
         const index = this.events.indexOf(event);
-        this.events[index] = eventFromModal;
-        this.crudService.update(this.route, eventFromModal, index); // em vez de index, o correto é event.Id
+        this.loading = true;
+        this.crudService.update(this.eventsRoute + event._id, eventFromModal, 'event').subscribe(response => {
+          this.events[index] = eventFromModal;
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false;
+        });
       }
     });
   }
@@ -51,17 +60,27 @@ export class EventsComponent implements OnInit {
     const index = this.events.indexOf(event);
 
     if (index !== -1) {
-      this.events.splice(index, 1);
-      this.crudService.deleteById(this.route, index);
+      this.loading = true;
+      this.crudService.deleteById(this.eventsRoute + event._id).subscribe(response => {
+        this.events.splice(index, 1);
+        this.loading = false;
+      }, error => {
+        window.alert(error);
+        this.loading = false;
+      });
     }
   }
 
   loadEvents() {
-    this.crudService.getAll(this.route).subscribe(events => { this.events = events });
+    this.crudService.getAll(this.eventsRoute).subscribe(events => {
+      this.events = events;
+    }, error => {
+      window.alert(error);
+    });
   }
 
   ngOnInit() {
-    // this.loadEvents();
+    this.loadEvents();
   }
 
 }

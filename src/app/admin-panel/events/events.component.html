@@ -8,7 +8,6 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Local</th>
       <th>Descrição</th>
       <th>Data de início</th>
       <th>Data de fim</th>
@@ -18,13 +17,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let event of events">
-      <td style="vertical-align: middle">{{ event.local }}</td>
-      <td style="vertical-align: middle">{{ event.descricao }}</td>
-      <td style="vertical-align: middle">{{ event.dataInicio.getDate() + '/' + (event.dataInicio.getMonth() + 1) + '/' + event.dataInicio.getFullYear() }}</td>
-      <td style="vertical-align: middle">{{ event.dataFim.getDate() + '/' + (event.dataFim.getMonth() + 1) + '/' + event.dataFim.getFullYear()}}</td>
+      <td style="vertical-align: middle">{{ event.description }}</td>
+      <td style="vertical-align: middle">{{ event.created }}</td>
+      <td style="vertical-align: middle">{{ event.ended }}</td>
       <td style="vertical-align: middle">
-        <button class="btn btn-primary" (click)="updateEvent(event)">Editar</button>
-        <button class="btn btn-danger" (click)="deleteEvent(event)">Remover</button></td>
+        <button class="btn btn-primary" (click)="updateEvent(event)" [disabled]="this.loading">Editar</button>
+        <button class="btn btn-danger" (click)="deleteEvent(event)" [disabled]="this.loading">Remover</button></td>
     </tr>
 
     </tbody>
@@ -32,6 +30,6 @@
 </div>
 
 <div>
-  <button id="fixedButton" class="btn btn-success" (click)="createEvent()">
+  <button id="fixedButton" class="btn btn-success" (click)="createEvent()" [disabled]="this.loading">
     <span class="glyphicon glyphicon-plus-sign"></span> Novo evento</button>
 </div>

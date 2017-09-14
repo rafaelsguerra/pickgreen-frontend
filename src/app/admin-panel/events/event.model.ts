@@ -1,13 +1,12 @@
 export class Event {
-  local: string;
-  descricao: string;
-  dataInicio: Date;
-  dataFim: Date;
+  _id: number;
+  description: string;
+  created: string;
+  ended: string;
+  _place: number;
 
-  constructor(local: string, descricao: string, dataInicio: Date, dataFim: Date) {
-    this.local = local;
-    this.descricao = descricao;
-    this.dataInicio = dataInicio;
-    this.dataFim = dataFim;
+  constructor(descricao: string, dataFim: string) {
+    this.description = descricao;
+    this.ended = dataFim;
   }
 }

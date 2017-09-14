@@ -12,24 +12,26 @@ import { CrudService } from '../../_services/crud.service';
 })
 export class CollectorsComponent implements OnInit {
 
-  collectors: Collector[] = [
-    new Collector('Coletor A', 'coletora@exemplo.com', '11.111.111/0001-11'),
-    new Collector('Coletor B', 'coletorb@example.com', '22.222.222/0001-22'),
-    new Collector('Coletor C', 'coletorc@example.com', '33.333.333/0001-33')
-  ];
-
-  route = 'coletorApi/';
+  collectors: Collector[] = [];
+  route = 'collectorApi/';
+  loading = false;
 
   constructor(private dialogService: DialogService, private crudService: CrudService) { }
 
   createCollector() {
     this.dialogService.addDialog(NewCollectorComponent, {
       title: 'Novo coletor',
-      collector: new Collector(null, null, null)
+      collector: new Collector(null, null, null, null, null, null, null, null, null, null, null)
     }).subscribe((collectorFromModal) => {
       if (typeof collectorFromModal !== 'undefined') {
-        this.collectors.push(collectorFromModal);
-        this.crudService.create(this.route, collectorFromModal);
+        this.loading = true;
+        this.crudService.create(this.route, collectorFromModal).subscribe(response => {
+          this.collectors.push(collectorFromModal);
+          this.loading = false;
+        }, error => {
+          console.log(error._body);
+          this.loading = false;
+        });
       }
     });
   }
@@ -41,8 +43,14 @@ export class CollectorsComponent implements OnInit {
     }).subscribe((collectorFromModal) => {
       if (typeof collectorFromModal !== 'undefined') {
         const index = this.collectors.indexOf(collector);
-        this.collectors[index] = collectorFromModal;
-        this.crudService.update(this.route, collectorFromModal, index); // o correto é collector.Id
+        this.loading = true;
+        this.crudService.update(this.route + collector._id, collectorFromModal, 'collector').subscribe(response => {
+          this.collectors[index] = collectorFromModal;
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false;
+        });
       }
     });
   }
@@ -51,17 +59,27 @@ export class CollectorsComponent implements OnInit {
     const index = this.collectors.indexOf(collector);
 
     if (index !== -1) {
-      this.collectors.splice(index, 1);
-      this.crudService.deleteById(this.route, index);
+      this.loading = true;
+      this.crudService.deleteById(this.route + collector._id).subscribe(response => {
+        this.collectors.splice(index, 1);
+        this.loading = false;
+      }, error => {
+        console.log(error.statusText);
+        this.loading = false;
+      });
     }
   }
 
   loadCollectors() {
-    this.crudService.getAll(this.route).subscribe(collectors => {this.collectors = collectors});
+    this.crudService.getAll(this.route).subscribe(collectors => {
+      this.collectors = collectors
+    }, error => {
+      window.alert(error);
+    });
   }
 
   ngOnInit() {
-    // this.loadCollectors();
+    this.loadCollectors();
   }
 
 }

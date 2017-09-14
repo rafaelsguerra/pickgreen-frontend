@@ -8,25 +8,27 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Local</th>
+      <th>Nome</th>
       <th>Telefone</th>
       <th>Endereço</th>
+      <th>Cidade</th>
       <th>Ações</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let place of depositPlaces">
-      <td style="vertical-align: middle">{{ place.local }}</td>
-      <td style="vertical-align: middle">{{ place.telefone }}</td>
-      <td style="vertical-align: middle">{{ place.endereco }}</td>
+      <td style="vertical-align: middle">{{ place.name }}</td>
+      <td style="vertical-align: middle">{{ place.phone }}</td>
+      <td style="vertical-align: middle">{{ place.street }}, {{place.number}}</td>
+      <td style="vertical-align: middle">{{ place.city }}</td>
       <td style="vertical-align: middle">
-        <button class="btn btn-primary" (click)="updateDepositPlace(place)">Editar</button>
-        <button class="btn btn-danger" (click)="deleteDepositPlace(place)">Remover</button></td>
+        <button class="btn btn-primary" (click)="updateDepositPlace(place)" [disabled]="this.loading">Editar</button>
+        <button class="btn btn-danger" (click)="deleteDepositPlace(place)" [disabled]="this.loading">Remover</button></td>
     </tr>
     </tbody>
   </table>
 </div>
 
 <div>
-  <button id="fixedButton" class="btn btn-success" (click)="createDepositPlace()"><span class="glyphicon glyphicon-plus-sign"></span> Novo local</button>
+  <button id="fixedButton" class="btn btn-success" (click)="createDepositPlace()" [disabled]="this.loading"><span class="glyphicon glyphicon-plus-sign"></span> Novo local</button>
 </div>

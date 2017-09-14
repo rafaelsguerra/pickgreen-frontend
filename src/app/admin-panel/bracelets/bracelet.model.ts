@@ -1,11 +1,12 @@
 export class Bracelet {
-  dono: string;
-  dataCriacao: Date;
+  _id: number;
+  code: number;
+  status: boolean;
   dataAtivacao: Date;
+  user_id: number;
 
-  constructor(dono: string, dataCriacao: Date, dataAtivacao: Date) {
-    this.dono = dono;
-    this.dataCriacao = dataCriacao;
-    this.dataAtivacao = dataAtivacao;
+  constructor(status: boolean, userId: number) {
+    this.status = status;
+    this.user_id = userId;
   }
 }

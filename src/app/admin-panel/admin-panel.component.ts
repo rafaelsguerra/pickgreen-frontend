@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FinalUser } from '../_services/login.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  currentUser: FinalUser;
+
+  constructor() {
+    this.currentUser = JSON.parse(sessionStorage.getItem('userAdm'));
+  }
 
   ngOnInit() {
   }

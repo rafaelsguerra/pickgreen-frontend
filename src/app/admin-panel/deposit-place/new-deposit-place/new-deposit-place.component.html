@@ -11,21 +11,21 @@
         <div class="form-group">
           <label for="nome" class="control-label col-sm-2" style="text-align: left">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="nome" [ngModel]="place.local" required>
+            <input type="text" class="form-control" id="nome" name="nome" [ngModel]="place.name" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="place.telefone">
+            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="place.phone">
           </div>
         </div>
 
         <div class="form-group">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="place.endereco">
+            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="place.street">
           </div>
         </div>
 
@@ -39,35 +39,35 @@
         <div class="form-group">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número:</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" ngModel>
+            <input type="number" id="numero" class="form-control" name="numero" [ngModel]="place.number">
           </div>
         </div>
 
         <div class="form-group">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" ngModel>
+            <input type="text" id="bairro" class="form-control" name="bairro" [ngModel]="place.neighborhood">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" ngModel>
+            <input type="text" id="cidade" class="form-control" name="cidade" [ngModel]="place.city">
           </div>
         </div>
 
         <div class="form-group">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" ngModel>
+            <input type="text" id="estado" class="form-control" name="estado" [ngModel]="place.state">
           </div>
         </div>
 
         <div class="form-group">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" ngModel>
+            <input type="text" id="cep" class="form-control" name="cep" [ngModel]="place.zipcode">
           </div>
         </div>
 

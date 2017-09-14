@@ -5,32 +5,37 @@
 </div>
 
 <div style="background-color: white">
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th>CPF</th>
-    <th>Ações</th>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Ações</th>
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let user of users">
-    <td style="vertical-align: middle">{{ user.name }}</td>
-    <td style="vertical-align: middle">{{ user.email }}</td>
-    <td style="vertical-align: middle">{{ user.cpf }}</td>
-    <td style="vertical-align: middle">
-      <button class="btn btn-primary" (click)="updateUser(user)">Editar</button>
-      <button class="btn btn-danger" (click)="deleteUser(user)">Remover</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td style="vertical-align: middle">{{ user.name }}</td>
+      <td style="vertical-align: middle">{{ user.email }}</td>
+      <td style="vertical-align: middle">{{ user.phone }}</td>
+      <td style="vertical-align: middle">
+        <button class="btn btn-primary" (click)="updateUser(user)" [disabled]="this.loading">Editar</button>
+        <button class="btn btn-danger" (click)="deleteUser(user)" [disabled]="this.loading">Remover</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="alertMessage != undefined" class="alert alert-danger">
+    <h4>{{ alertMessage }}</h4>
+  </div>
 </div>
 
 <div>
-  <button type="button" class="btn btn-success" id="fixedButton" (click)="createUser()">
+  <button type="button" class="btn btn-success" id="fixedButton" (click)="createUser()" [disabled]="this.loading">
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     <span class="glyphicon glyphicon-plus-sign"></span> Novo usuário</button>
 </div>
 

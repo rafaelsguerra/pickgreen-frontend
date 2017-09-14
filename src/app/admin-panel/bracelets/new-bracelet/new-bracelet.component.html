@@ -9,23 +9,20 @@
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
         <div class="form-group">
-          <label for="nome" class="control-label col-sm-2" style="text-align: left">Dono:</label>
+          <label class="control-label col-sm-2" style="text-align: left">Ativar:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="dono" [ngModel]="bracelet.dono" required>
+            <label class="radio-inline"><input type="radio" id="radioSim" [value]="true" name="ativar" [ngModel]="bracelet.status">Sim</label>
+            <label class="radio-inline"><input type="radio" id="radioNao" [value]="false" name="ativar" [ngModel]="bracelet.status">Não</label>
+
           </div>
         </div>
 
         <div class="form-group">
-          <label for="dataCriacao" class="control-label col-sm-2" style="text-align: left">Data de criação:</label>
+          <label for="userId" class="control-label col-sm-2" style="text-align: left">Dono:</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" id="dataCriacao" name="dataCriacao" [ngModel]="bracelet.dataCriacao" required useValueAsDate>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="dataAtivacao" class="control-label col-sm-2" style="text-align: left">Data de ativação:</label>
-          <div class="col-sm-10">
-            <input type="date" class="form-control" id="dataAtivacao" name="dataAtivacao" [ngModel]="bracelet.dataAtivacao" useValueAsDate>
+            <select type="text" class="form-control" id="userId" name="userId" [disabled]="!f.value.ativar" [ngModel]="bracelet.user_id">
+              <option *ngFor="let user of users" value="{{ user._id }}">{{ user.name }}</option>
+            </select>
           </div>
         </div>
 

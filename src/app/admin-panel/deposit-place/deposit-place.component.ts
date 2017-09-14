@@ -12,24 +12,26 @@ import { CrudService } from '../../_services/crud.service';
 })
 export class DepositPlaceComponent implements OnInit {
 
-  depositPlaces: DepositPlace[] = [
-    new DepositPlace('Local A', '111111111', 'Rua exemplo 1, número 123'),
-    new DepositPlace('Local B', '222222222', 'Rua exemplo 2, número 456'),
-    new DepositPlace('Local C', '333333333', 'Rua exemplo 3, número 789')
-  ];
-
-  route = 'localApi/';
+  depositPlaces: DepositPlace[] = [];
+  route = 'placeApi/';
+  loading = false;
 
   constructor(private dialogService: DialogService, private crudService: CrudService) { }
 
   createDepositPlace() {
     this.dialogService.addDialog(NewDepositPlaceComponent, {
       title: 'Novo local de depósito',
-      place: new DepositPlace(null, null, null)
+      place: new DepositPlace(null, null, null, null, null, null, null, null)
     }).subscribe((placeFromModal) => {
       if (typeof placeFromModal !== 'undefined') {
-        this.depositPlaces.push(placeFromModal);
-        this.crudService.create(this.route, placeFromModal);
+        this.loading = true;
+        this.crudService.create(this.route, placeFromModal).subscribe(response => {
+          this.depositPlaces.push(placeFromModal);
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false
+        });
       }
     });
   }
@@ -41,8 +43,14 @@ export class DepositPlaceComponent implements OnInit {
     }).subscribe((placeFromModal) => {
       if (typeof placeFromModal !== 'undefined') {
         const index = this.depositPlaces.indexOf(place);
-        this.depositPlaces[index] = placeFromModal;
-        this.crudService.update(this.route, placeFromModal, index);
+        this.loading = true;
+        this.crudService.update(this.route + place._id, placeFromModal, 'depositPlace').subscribe(response => {
+          this.depositPlaces[index] = placeFromModal;
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false;
+        });
       }
     });
   }
@@ -51,17 +59,27 @@ export class DepositPlaceComponent implements OnInit {
     const index = this.depositPlaces.indexOf(place);
 
     if (index !== -1) {
-      this.depositPlaces.splice(index, 1);
-      this.crudService.deleteById(this.route, index);
+      this.loading = true;
+      this.crudService.deleteById(this.route + place._id).subscribe(response => {
+        this.depositPlaces.splice(index, 1);
+        this.loading = false;
+      }, error => {
+        window.alert(error);
+        this.loading = false;
+      });
     }
   }
 
-  loadDepositPLaces() {
-    this.crudService.getAll(this.route).subscribe(depositPlaces => {this.depositPlaces = depositPlaces});
+  loadDepositPlaces() {
+    this.crudService.getAll(this.route).subscribe(depositPlaces => {
+      this.depositPlaces = depositPlaces;
+    }, error => {
+      window.alert(error);
+    });
   }
 
   ngOnInit() {
-    // this.loadDepositPLaces();
+    this.loadDepositPlaces();
   }
 
 }

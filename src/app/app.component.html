@@ -3,14 +3,16 @@
     <div class="navbar-header">
       <span class="navbar-brand" style="color: white">PickGreen</span>
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-left">
+    <div *ngIf="showMenu" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-left" *ngIf="showCollectorMenu">
         <li routerLinkActive="active">
           <a routerLink="/mapa" style="color: white">Mapa</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="/novo-deposito" style="color: white">Novo depósito</a>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-left" *ngIf="showAdmMenu">
         <li routerLinkActive="active"><a routerLink="usuarios">Usuários</a></li>
         <li routerLinkActive="active"><a routerLink="eventos">Eventos</a></li>
         <li routerLinkActive="active"><a routerLink="locais-de-deposito">Locais de depósito</a></li>

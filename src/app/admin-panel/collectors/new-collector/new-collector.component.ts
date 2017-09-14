@@ -23,7 +23,8 @@ export class NewCollectorComponent extends DialogComponent<NewCollectorModel, Co
   }
 
   onSubmit(form) {
-    this.result = new Collector(form.value.nome, form.value.email, form.value.cnpj);
+    this.result = new Collector(form.value.nome, form.value.cnpj, form.value.telefone, form.value.pin, form.value.rua,
+      form.value.complemento, form.value.numero, form.value.bairro, form.value.cidade, form.value.estado, form.value.cep);
     this.close();
   }
 
