@@ -1,30 +1,20 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     <div class="jumbotron" id="form-deposito-box">
-      <h2>Novo depósito</h2>
+      <h2>Confirmar depósito</h2>
       <hr>
 
-      <form #f="ngForm">
-        <div class="form-group">
-          <label for="idDeposito">ID da sacola:</label>
-          <input type="number" class="form-control" id="idDeposito">
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group" [ngClass]="{ 'has-error' : !idDeposito.valid && idDeposito.touched }">
+          <label for="idDeposito" class="control-label">ID da sacola:</label>
+          <input type="number" class="form-control" id="idDeposito" name="idDeposito" [(ngModel)]="deposit.code" required #idDeposito="ngModel">
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error' : !pesoSacola.valid && pesoSacola.touched }">
+          <label for="pesoSacola" class="control-label">Peso (kg):</label>
+          <input type="number" class="form-control" id="pesoSacola" name="pesoSacola" [(ngModel)]="deposit.weight" required #pesoSacola="ngModel">
         </div>
         <div class="form-group">
-          <label for="pesoSacola">Peso:</label>
-          <input type="number" class="form-control" id="pesoSacola">
-        </div>
-        <div class="form-group">
-          <label for="tipoMaterial">Material:</label>
-          <select name="tipoMaterial" id="tipoMaterial" class="form-control">
-            <option value="papel">Papel</option>
-            <option value="plastico">Plástico</option>
-            <option value="vidro">Vidro</option>
-            <option value="metal">Metal</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Confirmar depósito</button>
-
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Confirmar</button>
         </div>
       </form>
     </div>

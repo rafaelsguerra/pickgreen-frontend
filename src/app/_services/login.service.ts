@@ -72,4 +72,12 @@ export class LoginService {
     this.showAdmMenuEmitter.emit(false);
   }
 
+  isAdmLogged() {
+    return this.admLogged;
+  }
+
+  isCollectorLogged() {
+    return this.collectorLogged;
+  }
+
 }

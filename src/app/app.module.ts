@@ -25,6 +25,8 @@ import { NewBraceletComponent } from './admin-panel/bracelets/new-bracelet/new-b
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { LoginService } from './_services/login.service';
 import { CrudService } from './_services/crud.service';
+import { AdmAuthGuard } from './_guards/adm-auth.guard';
+import { CollectorAuthGuard } from './_guards/collector-auth.guard';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,7 @@ import { CrudService } from './_services/crud.service';
     NewCollectorComponent,
     NewBraceletComponent
   ],
-  providers: [LoginService, CrudService],
+  providers: [LoginService, CrudService, AdmAuthGuard, CollectorAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

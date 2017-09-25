@@ -8,38 +8,31 @@
 
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !name.valid && name.touched }">
           <label for="nome" class="control-label col-sm-2" style="text-align: left">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="name" required [ngModel]="user.name">
+            <input type="text" class="form-control" id="nome" name="name" required [ngModel]="user.name" #name="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && email.touched }">
           <label for="email" class="control-label col-sm-2" style="text-align: left">Email:</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" required [ngModel]="user.email">
+            <input type="email" class="form-control" id="email" name="email" required [ngModel]="user.email" #email="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
           <label for="senha" class="control-label col-sm-2" style="text-align: left">Senha:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="senha" name="password" [ngModel]="user.password">
+            <input type="text" class="form-control" id="senha" name="password" required [ngModel]="user.password" #password="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="cpf" class="control-label col-sm-2" style="text-align: left">CPF:</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="cpf" name="cpf" [ngModel]="user.cpf">
-          </div>
-        </div>
-
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !data.valid && data.touched }">
           <label for="datanascimento" class="control-label col-sm-2">Nascimento:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="datanascimento" name="data" [ngModel]="user.birth">
+            <input type="text" class="form-control" id="datanascimento" name="data" [ngModel]="user.birth" #data="ngModel">
           </div>
         </div>
 
@@ -53,10 +46,10 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !telefone.valid && telefone.touched }">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="user.phone">
+            <input type="tel" id="telefone" class="form-control" name="telefone" required [ngModel]="user.phone" #telefone="ngModel">
           </div>
         </div>
 
@@ -67,10 +60,10 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !rua.valid && rua.touched }">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="user.street">
+            <input type="text" id="rua" class="form-control" name="rua" required [ngModel]="user.street" #rua="ngModel">
           </div>
         </div>
 
@@ -81,43 +74,43 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !numero.valid && numero.touched }">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" [ngModel]="user.number">
+            <input type="number" id="numero" class="form-control" name="numero" required [ngModel]="user.number" #numero="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !bairro.valid && bairro.touched }">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" [ngModel]="user.neighborhood">
+            <input type="text" id="bairro" class="form-control" name="bairro" required [ngModel]="user.neighborhood" #bairro="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !cidade.valid && cidade.touched }">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" [ngModel]="user.city">
+            <input type="text" id="cidade" class="form-control" name="cidade" required [ngModel]="user.city" #cidade="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !estado.valid && estado.touched }">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" [ngModel]="user.state">
+            <input type="text" id="estado" class="form-control" name="estado" required [ngModel]="user.state" #estado="ngModel">
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !cep.valid && cep.touched }">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" [ngModel]="user.zipcode">
+            <input type="text" id="cep" class="form-control" name="cep" required [ngModel]="user.zipcode" #cep="ngModel">
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Ok</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Ok</button>
           <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
         </div>
 

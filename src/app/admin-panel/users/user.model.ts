@@ -3,7 +3,6 @@ export class User {
   public name: string;
   public email: string;
   public birth: string;
-  public cpf: string;
   public password: string;
   public sex: string;
   public points: string;

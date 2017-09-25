@@ -10,18 +10,20 @@ import { DepositPlaceComponent } from './admin-panel/deposit-place/deposit-place
 import { CollectorsComponent } from './admin-panel/collectors/collectors.component';
 import { BraceletsComponent } from './admin-panel/bracelets/bracelets.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdmAuthGuard } from './_guards/adm-auth.guard';
+import { CollectorAuthGuard } from './_guards/collector-auth.guard';
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'mapa', component: MapComponent },
-  { path: 'novo-deposito', component: DepositoComponent },
-  { path: 'painel', component: AdminPanelComponent },
-  { path: 'usuarios', component: UsersComponent },
-  { path: 'eventos', component: EventsComponent },
-  { path: 'locais-de-deposito', component: DepositPlaceComponent },
-  { path: 'coletores', component: CollectorsComponent },
-  { path: 'pulseiras', component: BraceletsComponent }
+  { path: 'mapa', component: MapComponent, canActivate: [CollectorAuthGuard] },
+  { path: 'confirmar-deposito', component: DepositoComponent, canActivate: [CollectorAuthGuard] },
+  { path: 'painel', component: AdminPanelComponent, canActivate: [AdmAuthGuard] },
+  { path: 'usuarios', component: UsersComponent, canActivate: [AdmAuthGuard] },
+  { path: 'eventos', component: EventsComponent, canActivate: [AdmAuthGuard] },
+  { path: 'locais-de-deposito', component: DepositPlaceComponent, canActivate: [AdmAuthGuard] },
+  { path: 'coletores', component: CollectorsComponent, canActivate: [AdmAuthGuard] },
+  { path: 'pulseiras', component: BraceletsComponent, canActivate: [AdmAuthGuard] }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

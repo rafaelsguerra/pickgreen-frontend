@@ -9,10 +9,10 @@
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': !local.valid && local.touched }">
           <label for="local" class="control-label col-sm-2" style="text-align: left">Local:</label>
           <div class="col-sm-10">
-            <select name="local" id="local" class="form-control" [ngModel]="event._place">
+            <select name="local" id="local" class="form-control" [ngModel]="event._place" required #local="ngModel">
               <option *ngFor="let place of places" value="{{place._id}}">{{place.name}}</option>
             </select>
           </div>
@@ -22,23 +22,23 @@
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !descricao.valid && descricao.touched }">
           <label for="descricao" class="control-label col-sm-2" style="text-align: left">Descrição:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="descricao" name="descricao" [ngModel]="event.description" required>
+            <input type="text" class="form-control" id="descricao" name="descricao" [ngModel]="event.description" required #descricao="ngModel">
           </div>
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error' : !dataFim.valid && dataFim.touched }">
           <label for="dataFim" class="control-label col-sm-2" style="text-align: left">Data de término:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="dataFim" name="dataFim" [ngModel]="event.ended">
+            <input type="text" class="form-control" id="dataFim" name="dataFim" [ngModel]="event.ended" required #dataFim="ngModel">
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Ok</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Ok</button>
           <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
         </div>
 

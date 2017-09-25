@@ -6,8 +6,13 @@
 
 
 <agm-map [latitude]="y" [longitude]="x">
-  <div *ngFor="let coord of coords">
-    <agm-marker [latitude]="coord.lat" [longitude]="coord.lon"></agm-marker>
-  </div>
+  <agm-marker *ngFor="let place of places"
+              [latitude]="toNumber(place.geolocalization.lat)"
+              [longitude]="toNumber(place.geolocalization.lng)">
+    <agm-info-window>
+      <strong>{{ place.name }}</strong><br>
+      {{ place.street }}, {{ place.number }}
+    </agm-info-window>
+  </agm-marker>
 </agm-map>
 

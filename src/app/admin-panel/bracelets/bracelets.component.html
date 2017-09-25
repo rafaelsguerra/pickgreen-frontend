@@ -8,7 +8,6 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>ID</th>
       <th>Foi ativada</th>
       <th>Código</th>
       <th>Ações</th>
@@ -16,7 +15,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let bracelet of bracelets">
-      <td style="vertical-align: middle">{{ bracelet._id }}</td>
       <td style="vertical-align: middle">{{ bracelet.status ? 'Sim' : 'Não' }}</td>
       <td style="vertical-align: middle">{{ bracelet.code }}</td>
       <td style="vertical-align: middle">
